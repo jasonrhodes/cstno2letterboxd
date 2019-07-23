@@ -4,7 +4,8 @@ const leaderboard = [
 
 if (leaderboard.length > 0) {
   appendDownloadLink(leaderboard, {
-    element: document.querySelector("#currentLeaderboard h1")
+    element: document.querySelector("#currentLeaderboard h1"),
+    filename: "leaderboard.csv"
   });
 }
 
@@ -23,13 +24,12 @@ function appendDownloadLink(
   ids,
   {
     text = "\u21E9 SAVE LETTERBOXD CSV",
-    filename = "leaderboard.csv",
+    filename = "tmdb_ids.csv",
     element = document.body
   }
 ) {
   const link = document.createElement("a");
-  link.style =
-    "display: block; padding: 3px 10px; font-size: 50%; position: relative; top: -3px;";
+  link.style = "display: block; padding: 3px 10px; font-size: 50%;";
   link.textContent = text;
   link.download = filename;
   link.href = "data:text/csv,tmdbID\n" + ids.join("\n");
